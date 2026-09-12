@@ -1,0 +1,34 @@
+skill full
+
+layer app
+  match src/app/**
+  match src/pages/**
+  match app/**
+
+layer components
+  match src/components/**
+  match components/**
+
+layer services
+  match src/lib/**
+  match src/server/**
+  match lib/**
+
+layer data
+  match src/db/**
+  match prisma/**
+  match drizzle/**
+
+rule app_no_data
+  from app
+  cannot use data
+  severity high
+  message App routes must not reach the database client directly.
+  hint Call a service or a server action that lives in services.
+
+rule components_no_data
+  from components
+  cannot use data
+  severity high
+  message Components stay presentational.
+  hint Load data in a service, not in the component file.
