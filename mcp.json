@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "hexum": {
+      "serverUrl": "https://hexum.dev/mcp",
+      "headers": { "Authorization": "Bearer hexum_live_…" }
+    }
+  }
+}
