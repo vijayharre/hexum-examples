@@ -1,0 +1,18 @@
+skill full
+
+layer ui
+  match src/ui/**
+  match src/pages/**
+
+layer services
+  match src/services/**
+
+layer data
+  match src/data/**
+
+rule no_ui_to_data
+  from ui
+  cannot use data
+  severity high
+  message UI must not import data access directly.
+  hint Call services instead.
