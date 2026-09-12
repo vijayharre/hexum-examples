@@ -1,0 +1,21 @@
+skill full
+
+layer api
+  match src/api/**
+  match app/api/**
+
+layer domain
+  match src/domain/**
+  match src/services/**
+
+layer adapters
+  match src/adapters/**
+  match src/db/**
+  match src/clients/**
+
+rule api_no_adapters
+  from api
+  cannot use adapters
+  severity high
+  message HTTP handlers must not import the database or HTTP clients directly.
+  hint Call domain services. Adapters stay behind that boundary.
