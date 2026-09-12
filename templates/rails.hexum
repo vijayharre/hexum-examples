@@ -1,0 +1,21 @@
+skill full
+
+layer web
+  match app/controllers/**
+  match app/views/**
+  match app/helpers/**
+
+layer services
+  match app/services/**
+  match app/jobs/**
+
+layer data
+  match app/models/**
+  match app/repositories/**
+
+rule web_no_data
+  from web
+  cannot use data
+  severity high
+  message Controllers must not talk to models that other layers own as data access.
+  hint Call a service. Keep ActiveRecord inside data or an explicit service.
